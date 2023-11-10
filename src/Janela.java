@@ -1,3 +1,4 @@
+package src;
 import java.awt.*;
 // import java.awt.event.ActionEvent;
 // import java.awt.event.ActionListener;
@@ -6,10 +7,8 @@ import java.util.List;
 
 import javax.swing.*;
 
-import src.GameObject;
-
 public class Janela extends JFrame{
-    List<GameObject> renderingList = new ArrayList<GameObject>();
+    public List<GameObject> renderingList = new ArrayList<GameObject>();
     public Janela() {
         setLayout(new FlowLayout());
         getContentPane().setBackground(Color.WHITE);

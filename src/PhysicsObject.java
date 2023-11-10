@@ -12,12 +12,13 @@ public class PhysicsObject extends GameObject {
     }
     @Override
     public void update() {
-        super.update();
+        
         this.velocityX = this.velocityX + this.forceX*this.deltaTimeRender;
         this.positionX = this.positionX + this.velocityX*this.deltaTimeRender;
-
+        
         this.velocityY = this.velocityY + this.forceY*this.deltaTimeRender;
         this.positionY = this.positionY + this.velocityY*this.deltaTimeRender;
+        super.update();
     }
     @Override
     public void draw(Graphics g) {

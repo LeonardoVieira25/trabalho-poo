@@ -18,6 +18,7 @@ public class Map1 extends Scene {
             public void mouseClicked(MouseEvent e) {
                 PhysicsObject novoObjeto = new PhysicsObject(e.getX(), e.getY(), 100, 100);
                 novoObjeto.forceY = (300);
+                novoObjeto.velocityX = (800);
                 janela.renderingList.add(novoObjeto);
                 updateList.add(novoObjeto);
             }

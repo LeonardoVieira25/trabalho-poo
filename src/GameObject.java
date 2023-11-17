@@ -10,6 +10,7 @@ public class GameObject {
     public double width;
     public double height;
     public String name;
+    public Color color = Color.BLACK;
 
     public List<GameObject> intersectList = new ArrayList<GameObject>();
 
@@ -30,7 +31,7 @@ public class GameObject {
     }
     public void draw(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.BLACK);
+        g2d.setColor(color);
         g2d.setStroke(new BasicStroke(50));
         g2d.fillRect((int) this.positionX,(int) this.positionY,(int) this.width,(int) this.height);
     }

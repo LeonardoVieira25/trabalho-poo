@@ -5,6 +5,13 @@ import java.util.List;
 public class Scene {
     public List<GameObject> updateList = new java.util.ArrayList<GameObject>();
 
+    public static int mousePressedX = -1;
+    public static int mousePressedY = -1;
+    
+    public static int mousePositionX = -1;
+    public static int mousePositionY = -1;
+
+
     public Janela janela;
 
     public Scene(Janela janela) {

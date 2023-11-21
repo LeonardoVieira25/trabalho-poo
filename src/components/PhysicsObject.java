@@ -1,6 +1,6 @@
-package src;
+package src.components;
 
-import java.awt.Graphics;
+import java.awt.*;
 
 public class PhysicsObject extends GameObject {
     public double velocityX = 0;
@@ -21,8 +21,7 @@ public class PhysicsObject extends GameObject {
         super.update();
     }
     @Override
-    public void draw(Graphics g) {
-        super.draw(g);
-        
+    public void draw(Graphics2D g2d) {
+        super.draw(g2d);
     }
 }

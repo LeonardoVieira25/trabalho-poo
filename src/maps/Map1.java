@@ -1,38 +1,42 @@
 package src.maps;
 
-import src.GameObject;
 import src.Janela;
-import src.PhysicsObject;
 import src.Scene;
+import src.behaviors.ClickableArea;
+import src.components.GameObject;
+import src.components.PhysicsObject;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 public class Map1 extends Scene {
     public Map1(Janela janela) {
         super(janela);
-        janela.renderingList.add(new GameObject(0, 700, 1000, 20));
-        
-        ClickableArea clickableArea = new ClickableArea(100, 500, 200, 200, () -> {
-            System.out.println("Clicou");
-        });
+        // List<GameObject> renderingList1 = new java.util.ArrayList<GameObject>();
+        List<GameObject> updateList1 = new java.util.ArrayList<GameObject>();
 
-        janela.renderingList.add(clickableArea);
-        updateList.add(clickableArea);
+        // PhysicsObject button = new PhysicsObject(10, 200, 100, 100);
+        GameObject button = new GameObject(10, 200, 100, 100);
+        button.behaviors.add(new ClickableArea(button, () -> {
+            System.out.println("Clicou 1");
+            button.removeNextIteration = true;
+            // button.positionX += 100;
+        }));
+        // button.forceY = -25;
+
+        // renderingList1.add(button);
+        updateList1.add(button);
+
+        // janela.renderingList = renderingList1;
+        janela.renderingList = updateList1;
+        updateList = updateList1;
 
         janela.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                PhysicsObject novoObjeto = new PhysicsObject(e.getX(), e.getY(), 100, 100);
-                novoObjeto.forceY = (300);
-                novoObjeto.velocityX = (800);
-                janela.renderingList.add(novoObjeto);
-                updateList.add(novoObjeto);
-            }
-
-            @Override
             public void mousePressed(MouseEvent e) {
                 mousePressedX = e.getX();
-                mousePressedY = e.getY();
+                mousePressedY = -(e.getY() - Janela.HEIGHT);
                 super.mousePressed(e);
             }
 
@@ -42,13 +46,13 @@ public class Map1 extends Scene {
                 mousePressedY = -1;
                 super.mouseReleased(e);
             }
-            
+
         });
         janela.addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
                 mousePositionX = e.getX();
-                mousePositionY = e.getY();
+                mousePositionY = -(e.getY() - Janela.HEIGHT);
                 super.mouseMoved(e);
             }
         });

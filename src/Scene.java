@@ -1,16 +1,19 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import src.behaviors.Behavior;
+import src.components.GameObject;
 
 public class Scene {
     public List<GameObject> updateList = new java.util.ArrayList<GameObject>();
 
     public static int mousePressedX = -1;
     public static int mousePressedY = -1;
-    
+
     public static int mousePositionX = -1;
     public static int mousePositionY = -1;
-
 
     public Janela janela;
 
@@ -20,13 +23,23 @@ public class Scene {
         Runnable gameLoop = new Runnable() {
             @Override
             public void run() {
+                List<GameObject> ObjectsToRemove = new ArrayList<GameObject>();
                 double firstTime, lastTime, waitTime;
-                int FPS = 24;
+                int FPS = 60;
 
                 while (true) {
-                    firstTime = System.nanoTime();                    
+                    firstTime = System.nanoTime();
+                    
                     for (GameObject gameObject : updateList) {
-                        gameObject.update();
+                        if(gameObject.removeNextIteration){
+                            ObjectsToRemove.add(gameObject);
+                        }else{
+                            gameObject.update();
+                        }
+                    }
+                    if(ObjectsToRemove.size() > 0){
+                        updateList.removeAll(ObjectsToRemove);
+                        ObjectsToRemove.clear();
                     }
                     janela.render();
                     lastTime = System.nanoTime();

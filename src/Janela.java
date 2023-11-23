@@ -9,6 +9,7 @@ import src.components.GameObject;
 
 public class Janela extends JFrame{
     public List<GameObject> renderingList = new ArrayList<GameObject>();
+    public List<GameObject> renderingListBuffer = new ArrayList<GameObject>();
     public static int HEIGHT = 0;
     public static int WIDTH = 0;
     public Janela() {
@@ -54,6 +55,10 @@ public class Janela extends JFrame{
         if(ObjectsToRemove.size() > 0){
             renderingList.removeAll(ObjectsToRemove);
             ObjectsToRemove.clear();
+        }
+        if(renderingListBuffer.size() > 0){
+            renderingList.addAll(renderingListBuffer);
+            renderingListBuffer.clear();
         }
     }
 }

@@ -3,8 +3,8 @@ package src.maps;
 import src.Janela;
 import src.Scene;
 import src.behaviors.ClickableArea;
+import src.behaviors.SpawnBlocks;
 import src.components.GameObject;
-import src.components.PhysicsObject;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -13,24 +13,28 @@ import java.util.List;
 public class Map1 extends Scene {
     public Map1(Janela janela) {
         super(janela);
-        // List<GameObject> renderingList1 = new java.util.ArrayList<GameObject>();
-        List<GameObject> updateList1 = new java.util.ArrayList<GameObject>();
+        List<GameObject> objectsList = new java.util.ArrayList<GameObject>();
+        List<GameObject> objectsListBuffer = new java.util.ArrayList<GameObject>();
 
-        // PhysicsObject button = new PhysicsObject(10, 200, 100, 100);
         GameObject button = new GameObject(10, 200, 100, 100);
         button.behaviors.add(new ClickableArea(button, () -> {
             System.out.println("Clicou 1");
             button.removeNextIteration = true;
-            // button.positionX += 100;
         }));
-        // button.forceY = -25;
+        objectsList.add(button);
 
-        // renderingList1.add(button);
-        updateList1.add(button);
+        GameObject spawner = new GameObject(200,200,50,50);
+        spawner.behaviors.add(new SpawnBlocks(spawner, objectsListBuffer));
 
-        // janela.renderingList = renderingList1;
-        janela.renderingList = updateList1;
-        updateList = updateList1;
+        objectsList.add(spawner);
+
+
+
+
+        janela.renderingList = objectsList;
+        janela.renderingListBuffer = objectsListBuffer;
+        updateList = objectsList;
+        updateListBuffer = objectsListBuffer;
 
         janela.addMouseListener(new MouseAdapter() {
             @Override

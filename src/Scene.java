@@ -8,6 +8,7 @@ import src.components.GameObject;
 
 public class Scene {
     public List<GameObject> updateList = new java.util.ArrayList<GameObject>();
+    public List<GameObject> updateListBuffer = new java.util.ArrayList<GameObject>();
 
     public static int mousePressedX = -1;
     public static int mousePressedY = -1;

@@ -7,10 +7,10 @@ import java.util.List;
 
 
 public class SpawnBlocks extends Behavior {
-    private List<GameObject> renderList;
-    public SpawnBlocks(GameObject gameObject, List<GameObject> renderList) {
+    private List<GameObject> objectsList;
+    public SpawnBlocks(GameObject gameObject, List<GameObject> objectsList) {
         super(gameObject);
-        this.renderList = renderList;
+        this.objectsList = objectsList;
     }
     private double accumulatedTime = 0;
     @Override
@@ -19,8 +19,8 @@ public class SpawnBlocks extends Behavior {
         if(accumulatedTime > 1){
             System.out.println("criar bloco");
             PhysicsObject newBlock = new PhysicsObject(gameObject.positionX, gameObject.positionY, 10, 10);
-            newBlock.velocityX = 100;
-            renderList.add(newBlock);
+            newBlock.velocityY = -100;
+            objectsList.add(newBlock);
             accumulatedTime = 0;
         }
     }

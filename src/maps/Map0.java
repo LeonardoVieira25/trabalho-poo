@@ -5,15 +5,15 @@ import src.behaviors.ClickableArea;
 import src.components.GameObject;
 
 
-public class Map1 extends Maps {
-    public Map1() {
+public class Map0 extends Maps {
+    public Map0() {
         objectsList = new java.util.ArrayList<GameObject>();
         objectsListBuffer = new java.util.ArrayList<GameObject>();
-        GameObject button = new GameObject(200, 200, 100, 100);
 
+        GameObject button = new GameObject(100, 200, 100, 100);
         button.behaviors.add(new ClickableArea(button, () -> {
-            System.out.println("Clicou 1");
-            Scene.selectedMapId = 0;
+            System.out.println("Clicou 0");
+            Scene.selectedMapId = 1;
         }));
         objectsList.add(button);
     }

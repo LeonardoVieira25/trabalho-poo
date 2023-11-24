@@ -1,6 +1,5 @@
 package src;
 import java.awt.*;
-import java.util.*;
 import java.util.List;
 
 import javax.swing.*;
@@ -8,8 +7,7 @@ import javax.swing.*;
 import src.components.GameObject;
 
 public class Janela extends JFrame{
-    public List<GameObject> renderingList = new ArrayList<GameObject>();
-    public List<GameObject> renderingListBuffer = new ArrayList<GameObject>();
+    public List<GameObject> renderingList;
     public static int HEIGHT = 0;
     public static int WIDTH = 0;
     public Janela() {
@@ -34,31 +32,19 @@ public class Janela extends JFrame{
         });
     }
     
-    public void render(){
+    public void render(List<GameObject> renderingList){
+        this.renderingList = renderingList;
         repaint();
     }
     
     
-    private List<GameObject> ObjectsToRemove = new ArrayList<GameObject>();
     
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.translate(0, getHeight());
         for (GameObject gameObject : renderingList) {
-            if(gameObject.removeNextIteration){
-                ObjectsToRemove.add(gameObject);
-            }else{
-                gameObject.draw(g2d);
-            }
-        }
-        if(ObjectsToRemove.size() > 0){
-            renderingList.removeAll(ObjectsToRemove);
-            ObjectsToRemove.clear();
-        }
-        if(renderingListBuffer.size() > 0){
-            renderingList.addAll(renderingListBuffer);
-            renderingListBuffer.clear();
+            gameObject.draw(g2d);
         }
     }
 }

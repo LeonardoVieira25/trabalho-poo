@@ -8,10 +8,12 @@ import src.components.GameObject;
 
 public class Janela extends JFrame{
     public List<GameObject> renderingList;
-    public static int HEIGHT = 0;
-    public static int WIDTH = 0;
+    
+    private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    public static int HEIGHT = (int) screenSize.height/2;
+    public static int WIDTH = (int) screenSize.width/2;
+    
     public Janela() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         System.out.println(screenSize.width + "x" + screenSize.height);
 
         
@@ -19,8 +21,6 @@ public class Janela extends JFrame{
         setLayout(new FlowLayout());
         getContentPane().setBackground(Color.WHITE);
         setSize((int) screenSize.width/2,(int) screenSize.height/2);
-        HEIGHT = (int) screenSize.height/2;
-        WIDTH = (int) screenSize.width/2;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -30,6 +30,7 @@ public class Janela extends JFrame{
                 WIDTH = getWidth();
             }
         });
+        
     }
     
     public void render(List<GameObject> renderingList){

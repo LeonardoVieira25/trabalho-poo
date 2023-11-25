@@ -1,8 +1,12 @@
 package src;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.Timer;
 
 import java.awt.event.MouseEvent;
 
@@ -61,7 +65,7 @@ public class Scene {
             public void run() {
                 List<GameObject> ObjectsToRemove = new ArrayList<GameObject>();
                 double firstTime, lastTime, waitTime;
-                int FPS = 60;
+                int FPS = 30;
 
                 while (true) {
                     firstTime = System.nanoTime();
@@ -73,7 +77,7 @@ public class Scene {
                             gameObject.update();
                         }
                     }
-                    janela.render(maps.get(selectedMapId).objectsList);
+                    // janela.render(maps.get(selectedMapId).objectsList);
                     if (ObjectsToRemove.size() > 0) {
                         maps.get(selectedMapId).objectsList.removeAll(ObjectsToRemove);
                         ObjectsToRemove.clear();
@@ -91,6 +95,23 @@ public class Scene {
                 }
             }
         };
+        Runnable renderLoop = new Runnable() {
+            @Override
+            public void run() {
+                
+                // double firstTime, lastTime, waitTime = 0;
+                int FPS = 1;
+                ActionListener taskPerformer = new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        // System.out.println("render");
+                        janela.render(new ArrayList<GameObject>(maps.get(selectedMapId).objectsList));
+                    }
+                };
+                new Timer(20 , taskPerformer).start();
+            }
+        };
+        Thread renderThread = new Thread(renderLoop);
+        renderThread.start();
         Thread gameThread = new Thread(gameLoop);
         gameThread.start();
     }

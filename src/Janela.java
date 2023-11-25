@@ -6,7 +6,8 @@ import javax.swing.*;
 
 import src.components.GameObject;
 
-public class Janela extends JFrame{
+// public class Janela extends JFrame{
+public class Janela extends JPanel{
     public List<GameObject> renderingList;
     
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -16,13 +17,14 @@ public class Janela extends JFrame{
     public Janela() {
         System.out.println(screenSize.width + "x" + screenSize.height);
 
-        
+        JFrame frame = new JFrame("Janela");
 
         setLayout(new FlowLayout());
-        getContentPane().setBackground(Color.WHITE);
-        setSize((int) screenSize.width/2,(int) screenSize.height/2);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        frame.getContentPane().setBackground(Color.WHITE);
+        // frame.setSize((int) screenSize.width/2,(int) screenSize.height/2);
+        // setSize((int) screenSize.width/2,(int) screenSize.height/2);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         setVisible(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
@@ -30,22 +32,45 @@ public class Janela extends JFrame{
                 WIDTH = getWidth();
             }
         });
+        frame.add(this);
+        frame.pack();
+        frame.setVisible(true);
+        
         
     }
     
     public void render(List<GameObject> renderingList){
-        this.renderingList = renderingList;
-        repaint();
+        if(renderingList != null){
+            this.renderingList = renderingList;
+            repaint();
+        }
     }
     
+    // @Override
+    // public void paintComponent(Graphics g){
+        
+    // }
     
     
-    public void paint(Graphics g) {
-        super.paint(g);
+    // public void paint(Graphics g) {
+    public void paintComponent(Graphics g) {
+        // super.paintComponents(g);
+        // super.paint(g);
+        
         Graphics2D g2d = (Graphics2D) g;
+        
+        // super.paint(g2d);
+        // setBackground(Color.WHITE);
+        // removeAll();
+        
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, WIDTH, HEIGHT);
         g2d.translate(0, getHeight());
-        for (GameObject gameObject : renderingList) {
-            gameObject.draw(g2d);
+        
+        if(renderingList != null){
+            for (GameObject gameObject : renderingList) {
+                gameObject.draw(g2d);
+            }
         }
     }
 }

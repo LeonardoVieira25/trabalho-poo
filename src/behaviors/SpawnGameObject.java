@@ -13,25 +13,33 @@ public class SpawnGameObject extends Behavior {
     public SpawnGameObject(GameObject gameObject, List<GameObject> objectsList) {
         super(gameObject);
         this.objectsList = objectsList;
-        // this.objectToSpawn = objectToSpan;
-        // this.objectToSpawn.positionX = gameObject.positionX;
-        // this.objectToSpawn.positionY = gameObject.positionY;
     }
     private double accumulatedTime = 0;
     @Override
     public void update(){
         accumulatedTime += gameObject.deltaTimeRender;
-        if(accumulatedTime > 0.01){
+        if(accumulatedTime > 1){
             System.out.println("criar bloco");
-            PhysicsObject newInstance = new PhysicsObject(gameObject.positionX, gameObject.positionY, 5, 5);
-            newInstance.forceX = (Math.random() * 50 - 25);
-            newInstance.forceY = (Math.random() * 50 - 25);
+
+
+            //* Nessa parte que gostaria de clonar um objeto passado como argumento
+            //* Esse objeto seria uma classe que estende GameObject chamada objectToSpawn
+            //* que eu poderia alterar dentro do GameObject que possui essa behavior
+            //* Dessa forma conseguiria criar vários objetos que representariam entidades diferentes
+            //* como um inimigo, um bloco, uma moeda, etc.
+            
+            PhysicsObject newInstance = new PhysicsObject(gameObject.positionX, gameObject.positionY, 50, 50);
+            newInstance.velocityX = (Math.random() * 100 - 50);
+            newInstance.velocityY = (Math.random() * 100 - 50);
+            newInstance.forceY = -100;
+
 
             newInstance.behaviors.add(new BounceVertical(newInstance));
             newInstance.behaviors.add(new BounceHorizontal(newInstance));
             newInstance.behaviors.add(new ClickableArea(newInstance, () -> {
                 newInstance.removeNextIteration = true;
             }));
+            newInstance.behaviors.add(new Collision(newInstance));
             
             
             objectsList.add(newInstance);

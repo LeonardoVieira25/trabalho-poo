@@ -21,9 +21,8 @@ public class Janela extends JPanel{
 
         setLayout(new FlowLayout());
         frame.getContentPane().setBackground(Color.WHITE);
-        // frame.setSize((int) screenSize.width/2,(int) screenSize.height/2);
-        // setSize((int) screenSize.width/2,(int) screenSize.height/2);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(800, 800));
         frame.setLocationRelativeTo(null);
         setVisible(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -46,22 +45,8 @@ public class Janela extends JPanel{
         }
     }
     
-    // @Override
-    // public void paintComponent(Graphics g){
-        
-    // }
-    
-    
-    // public void paint(Graphics g) {
     public void paintComponent(Graphics g) {
-        // super.paintComponents(g);
-        // super.paint(g);
-        
         Graphics2D g2d = (Graphics2D) g;
-        
-        // super.paint(g2d);
-        // setBackground(Color.WHITE);
-        // removeAll();
         
         g2d.setColor(Color.WHITE);
         g2d.fillRect(0, 0, WIDTH, HEIGHT);

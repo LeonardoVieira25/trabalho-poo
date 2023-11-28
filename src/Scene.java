@@ -77,6 +77,53 @@ public class Scene {
                             gameObject.update();
                         }
                     }
+                    // * verificar por colisões */
+                    List<GameObject> objectsList = maps.get(selectedMapId).objectsList;
+                    for (int i = 0; i < objectsList.size(); i++) {
+                        GameObject gameObject = objectsList.get(i);
+                        for (int j = i + 1; j < objectsList.size(); j++) {
+                            GameObject otherGameObject = objectsList.get(j);
+                            if (gameObject != otherGameObject &&
+                            // * verifica se ambos são physics objects */
+                                    gameObject instanceof src.components.PhysicsObject &&
+                                    otherGameObject instanceof src.components.PhysicsObject &&
+
+                            // * verifica se ambos tem o comportamento de colisão */
+                                    gameObject.behaviors.stream()
+                                            .anyMatch(behavior -> behavior instanceof src.behaviors.Collision)
+                                    &&
+                                    otherGameObject.behaviors.stream()
+                                            .anyMatch(behavior -> behavior instanceof src.behaviors.Collision)) {
+
+                                // * seleciona a behavior de colisão dos objetos */
+                                src.behaviors.Collision collisionGameObject = (src.behaviors.Collision) gameObject.behaviors
+                                        .stream()
+                                        .filter(behavior -> behavior instanceof src.behaviors.Collision)
+                                        .findFirst()
+                                        .orElse(null);
+
+                                src.behaviors.Collision collisionOtherGameObject = (src.behaviors.Collision) otherGameObject.behaviors
+                                        .stream()
+                                        .filter(behavior -> behavior instanceof src.behaviors.Collision)
+                                        .findFirst()
+                                        .orElse(null);
+
+                                if (
+                                // * verifica se os objetos estão colidindo */
+                                gameObject.positionX < otherGameObject.positionX + otherGameObject.width &&
+                                        gameObject.positionX + gameObject.width > otherGameObject.positionX &&
+                                        gameObject.positionY < otherGameObject.positionY + otherGameObject.height &&
+                                        gameObject.positionY + gameObject.height > otherGameObject.positionY) {
+                                    collisionGameObject
+                                            .collisionEntered((src.components.PhysicsObject) otherGameObject);
+                                    collisionOtherGameObject
+                                            .collisionEntered((src.components.PhysicsObject) gameObject);
+                                }
+
+                            }
+                        }
+                    }
+
                     // janela.render(maps.get(selectedMapId).objectsList);
                     if (ObjectsToRemove.size() > 0) {
                         maps.get(selectedMapId).objectsList.removeAll(ObjectsToRemove);
@@ -98,7 +145,7 @@ public class Scene {
         Runnable renderLoop = new Runnable() {
             @Override
             public void run() {
-                
+
                 // double firstTime, lastTime, waitTime = 0;
                 int FPS = 1;
                 ActionListener taskPerformer = new ActionListener() {
@@ -107,7 +154,7 @@ public class Scene {
                         janela.render(new ArrayList<GameObject>(maps.get(selectedMapId).objectsList));
                     }
                 };
-                new Timer(20 , taskPerformer).start();
+                new Timer(20, taskPerformer).start();
             }
         };
         Thread renderThread = new Thread(renderLoop);

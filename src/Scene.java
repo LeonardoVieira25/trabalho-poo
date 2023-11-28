@@ -65,7 +65,7 @@ public class Scene {
             public void run() {
                 List<GameObject> ObjectsToRemove = new ArrayList<GameObject>();
                 double firstTime, lastTime, waitTime;
-                int FPS = 30;
+                int FPS = 200;
 
                 while (true) {
                     firstTime = System.nanoTime();
@@ -136,6 +136,9 @@ public class Scene {
                     lastTime = System.nanoTime();
                     try {
                         waitTime = ((1_000_000_000.0 / FPS) - (long) (lastTime - firstTime));
+                        if(waitTime < 0L){
+                            System.out.println("fps máximo atingido");
+                        }
                         Thread.sleep(waitTime < 0L ? 0L : (long) (waitTime / 1_000_000.0));
                     } catch (InterruptedException e) {
                     }

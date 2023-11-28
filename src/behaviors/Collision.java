@@ -1,7 +1,7 @@
 package src.behaviors;
 
-import src.Janela;
-import src.components.GameObject;
+import java.util.function.Function;
+
 import src.components.PhysicsObject;
 
 public class Collision extends Behavior {
@@ -16,6 +16,19 @@ public class Collision extends Behavior {
             isValid = false;
             return;
         }
+        this.physicsObject = gameObject;
+    }
+    private Function<PhysicsObject, Boolean> onCollision;
+    public Collision(PhysicsObject gameObject, Function<PhysicsObject, Boolean> onCollision) {
+        super(gameObject);
+
+
+        if (gameObject == null) {
+            System.out.println("null gameobject");
+            isValid = false;
+            return;
+        }
+        this.onCollision = onCollision;
         this.physicsObject = gameObject;
     }
 
@@ -33,6 +46,9 @@ public class Collision extends Behavior {
     
             // Verificar se há sobreposição e corrigir
             if (overlapX < overlapWidth && overlapY < overlapHeight) {
+                if(this.onCollision != null && this.onCollision.apply(otherPhysicsObject)){
+                    gameObject.removeNextIteration = true;
+                }
                 float offsetX = overlapWidth - overlapX;
                 float offsetY = overlapHeight - overlapY;
     

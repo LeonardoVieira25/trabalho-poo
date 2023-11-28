@@ -2,6 +2,7 @@ package src.behaviors;
 
 import src.components.GameObject;
 import src.components.PhysicsObject;
+import src.components.SlashParticle;
 
 import java.util.List;
 
@@ -39,7 +40,13 @@ public class SpawnGameObject extends Behavior {
             newInstance.behaviors.add(new ClickableArea(newInstance, () -> {
                 newInstance.removeNextIteration = true;
             }));
-            newInstance.behaviors.add(new Collision(newInstance));
+            newInstance.behaviors.add(new Collision(newInstance, (otherPhysicsObject) -> {
+                System.out.println("chamou pelo menos");
+                if(otherPhysicsObject instanceof SlashParticle){
+                System.out.println("colidiu com slash particle");
+                }
+                return otherPhysicsObject instanceof SlashParticle;
+            }));
             
             
             objectsList.add(newInstance);

@@ -1,8 +1,11 @@
 package src.maps;
 
 import src.Janela;
+import src.behaviors.Collision;
 import src.behaviors.SpawnGameObject;
 import src.components.GameObject;
+import src.components.PhysicsObject;
+import src.components.Player;
 
 
 public class Map1 extends Maps {
@@ -16,7 +19,8 @@ public class Map1 extends Maps {
 
         //* Aqui eu poderia controlar qual objeto seria criado de acordo com tempo de jogo, nível, etc.
         //* spawner.objectToSpawn = new AlgumTipoDeObjeto(args...);
-
+        Player player = new Player(objectsListBuffer);
+        objectsList.add(player);
 
         objectsList.add(spawner);
     }

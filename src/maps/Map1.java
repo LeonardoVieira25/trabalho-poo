@@ -1,9 +1,15 @@
 package src.maps;
 
 import src.Janela;
+import src.Scene;
+import src.behaviors.ClickableArea;
+import src.behaviors.Collision;
+import src.behaviors.SpawnGameObject;
 import src.components.GameObject;
 import src.components.Player;
 import src.components.Spawner;
+
+import src.components.Button;
 
 
 public class Map1 extends Maps {
@@ -22,6 +28,5 @@ public class Map1 extends Maps {
 
         Player player = new Player(objectsListBuffer);
         objectsList.add(player);
-
     }
 }

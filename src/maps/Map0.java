@@ -1,20 +1,35 @@
 package src.maps;
 
+import src.components.Button;
+import src.Janela;
 import src.Scene;
 import src.behaviors.ClickableArea;
 import src.components.GameObject;
 
 
 public class Map0 extends Maps {
-    public Map0() {
+    public Map0() { // e pra ser o mainMenu
         objectsList = new java.util.ArrayList<GameObject>();
         objectsListBuffer = new java.util.ArrayList<GameObject>();
-
-        GameObject button = new GameObject(100, 200, 100, 100);
-        button.behaviors.add(new ClickableArea(button, () -> {
+        float halfHeight = Janela.HEIGHT; // referente a tela
+        float halfWidth = Janela.WIDTH; // referente a tela
+        float optW = 150; // option width
+        float optH = 50; // option height
+        float espacamento = 20;
+        Button jogar = new Button("JOGAR", halfWidth - optW/2 , halfHeight, optW, optH);
+        jogar.behaviors.add(new ClickableArea(jogar, () -> {
             System.out.println("Clicou 0");
             Scene.selectedMapId = 1;
         }));
-        objectsList.add(button);
+
+        Button sair = new Button("QUIT", halfWidth - optW/2, halfHeight - espacamento - optH - espacamento, optW, optH);
+        jogar.behaviors.add(new ClickableArea(sair, () -> {
+            System.out.println("Clicou SAIR");
+            System.exit(0);
+        }));
+
+        objectsList.add(jogar);
+        objectsList.add(sair);
+        
     }
 }

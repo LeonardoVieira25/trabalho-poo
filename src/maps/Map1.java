@@ -1,11 +1,9 @@
 package src.maps;
 
 import src.Janela;
-import src.behaviors.Collision;
-import src.behaviors.SpawnGameObject;
 import src.components.GameObject;
-import src.components.PhysicsObject;
 import src.components.Player;
+import src.components.Spawner;
 
 
 public class Map1 extends Maps {
@@ -14,14 +12,16 @@ public class Map1 extends Maps {
         objectsListBuffer = new java.util.ArrayList<GameObject>();
 
 
-        GameObject spawner = new GameObject(200, Janela.HEIGHT+10, 100, 100);
-        spawner.behaviors.add(new SpawnGameObject(spawner, objectsListBuffer));
+        GameObject spawner1 = new Spawner(200, Janela.HEIGHT+10, 100, 100, objectsListBuffer);
+        objectsList.add(spawner1);
+        GameObject spawner2 = new Spawner(400, Janela.HEIGHT+10, 100, 100, objectsListBuffer);
+        objectsList.add(spawner2);
+        GameObject spawner3 = new Spawner(600, Janela.HEIGHT+10, 100, 100, objectsListBuffer);
+        objectsList.add(spawner3);
 
-        //* Aqui eu poderia controlar qual objeto seria criado de acordo com tempo de jogo, nível, etc.
-        //* spawner.objectToSpawn = new AlgumTipoDeObjeto(args...);
+
         Player player = new Player(objectsListBuffer);
         objectsList.add(player);
 
-        objectsList.add(spawner);
     }
 }

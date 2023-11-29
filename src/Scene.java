@@ -3,17 +3,14 @@ package src;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Timer;
 
-import java.awt.event.MouseEvent;
-
 import src.components.GameObject;
 import src.maps.Maps;
-
-import src.Scene;
 
 public class Scene {
 
@@ -65,7 +62,7 @@ public class Scene {
             public void run() {
                 List<GameObject> ObjectsToRemove = new ArrayList<GameObject>();
                 double firstTime, lastTime, waitTime;
-                int FPS = 200;
+                int FPS = 60;
 
                 while (true) {
                     firstTime = System.nanoTime();
@@ -150,7 +147,7 @@ public class Scene {
             public void run() {
 
                 // double firstTime, lastTime, waitTime = 0;
-                int FPS = 1;
+                // int FPS = 1;
                 ActionListener taskPerformer = new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         // System.out.println("render");

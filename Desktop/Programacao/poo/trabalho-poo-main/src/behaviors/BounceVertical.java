@@ -4,27 +4,29 @@ import src.Janela;
 import src.components.PhysicsObject;
 
 public class BounceVertical extends Behavior {
-    private PhysicsObject physicsObject;
+    // private PhysicsObject physicsObject;
     private boolean hasEnteredScreen = false;
 
     public BounceVertical(PhysicsObject gameObject) {
         super(gameObject);
-        this.physicsObject = gameObject;
+        // physicsObject = gameObject;
     }
-
+    
     @Override
     public void update() {
+        PhysicsObject physicsObject = (PhysicsObject) gameObject;
         if(hasEnteredScreen){
-            if(this.physicsObject.positionY < 0){
-                this.physicsObject.positionY = 0;
-                this.physicsObject.velocityY *= -0.8;
+            if(physicsObject.positionY < 0){
+                physicsObject.positionY = 0;
+                physicsObject.velocityY *= -0.8;
+                // System.out.println("Quicou"); #### --> abaixa numero de vidas de acordo com um contador. 
             }
-            if(this.physicsObject.positionY + this.physicsObject.height > Janela.HEIGHT){
-                this.physicsObject.positionY = Janela.HEIGHT - this.physicsObject.height;
-                this.physicsObject.velocityY *= -1;
+            if(physicsObject.positionY + physicsObject.height > Janela.HEIGHT){
+                physicsObject.positionY = Janela.HEIGHT - physicsObject.height;
+                physicsObject.velocityY *= -1;
             }
         }else{
-            if(this.physicsObject.positionY < Janela.HEIGHT){
+            if(physicsObject.positionY < Janela.HEIGHT){
                 hasEnteredScreen = true;
             }
         }

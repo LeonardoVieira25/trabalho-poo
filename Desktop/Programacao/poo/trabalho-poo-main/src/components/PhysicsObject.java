@@ -2,6 +2,8 @@ package src.components;
 
 import java.awt.*;
 
+import src.behaviors.Behavior;
+
 public class PhysicsObject extends GameObject {
     public double velocityX = 0;
     public double forceX = 0;
@@ -10,6 +12,23 @@ public class PhysicsObject extends GameObject {
     public float drag = 0.5f;
     public PhysicsObject(double positionX, double positionY, double width, double height){
         super(positionX, positionY, width, height);
+    }
+    @Override
+    public Object clone() {
+        PhysicsObject clone = new PhysicsObject(positionX, positionY, width, height);
+        clone.velocityX = this.velocityX;
+        clone.forceX = this.forceX;
+        clone.velocityY = this.velocityY;
+        clone.forceY = this.forceY;
+        clone.drag = this.drag;
+        
+        for (Behavior behavior : this.behaviors) {
+            Behavior cloneBehavior = behavior.clone();
+            cloneBehavior.gameObject = clone;
+
+            clone.behaviors.add(cloneBehavior);
+        }
+        return clone;
     }
     @Override
     public void update() {

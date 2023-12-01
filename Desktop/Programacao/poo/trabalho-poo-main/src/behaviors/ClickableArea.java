@@ -22,7 +22,7 @@ public class ClickableArea extends Behavior {
         if(isInside(Scene.mousePositionX, Scene.mousePositionY)){
             gameObject.color = java.awt.Color.RED;
         }else{
-            gameObject.color = java.awt.Color.BLACK;
+            gameObject.color = java.awt.Color.gray;
         }
         if (isInside(Scene.mousePressedX, Scene.mousePressedY)) {
             action.run();

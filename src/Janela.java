@@ -11,8 +11,8 @@ public class Janela extends JPanel{
     public List<GameObject> renderingList;
     
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    public static int HEIGHT = (int) screenSize.height/2;
-    public static int WIDTH = (int) screenSize.width/2;
+    public static int HEIGHT = (int) screenSize.height;
+    public static int WIDTH = (int) screenSize.width;
     
     public Janela() {
         System.out.println(screenSize.width + "x" + screenSize.height);

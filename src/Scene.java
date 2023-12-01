@@ -2,11 +2,16 @@ package src;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
 import src.components.GameObject;
@@ -133,7 +138,7 @@ public class Scene {
                     lastTime = System.nanoTime();
                     try {
                         waitTime = ((1_000_000_000.0 / FPS) - (long) (lastTime - firstTime));
-                        if(waitTime < 0L){
+                        if (waitTime < 0L) {
                             System.out.println("fps máximo atingido");
                         }
                         Thread.sleep(waitTime < 0L ? 0L : (long) (waitTime / 1_000_000.0));

@@ -11,22 +11,17 @@ public class Map0 extends Maps {
     public Map0() { // e pra ser o mainMenu
         objectsList = new java.util.ArrayList<GameObject>();
         objectsListBuffer = new java.util.ArrayList<GameObject>();
-        float halfHeight = Janela.HEIGHT/2; // referente a tela
-        float halfWidth = Janela.WIDTH/2; // referente a tela
-        float padW = 100; // padding width
-        float padH = 50; // padding height
-        float espacamento = 40;
-
-        // Logica para o Width dos botoes: diferença entre o ponto no meio da tela (dimensao em X) e o ponto de inicio do desenho do retangulo
-        // multiplicado por 2 (porque senao nao colore tudo, mas sim, apenas metade)
+        int halfHeight = Janela.HEIGHT/2; // referente a tela
+        int halfWidth = Janela.WIDTH/2; // referente a tela
+        int espacamento = 100;
         
-        Button jogar = new Button("JOGAR", halfWidth-"JOGAR".length()*35/2, halfHeight, (halfWidth-(halfWidth-"JOGAR".length()*35/2))*2, padH);
+        Button jogar = new Button("JOGAR", halfWidth, halfHeight);
         jogar.behaviors.add(new ClickableArea(jogar, () -> {
             System.out.println("Jogando");
             Scene.selectedMapId = 1;
         }));
 
-        Button sair = new Button("QUIT", halfWidth-"SAIR".length()*35/2, halfHeight - espacamento - padH, (halfWidth-(halfWidth-"SAIR".length()*35/2))*2, padH);
+        Button sair = new Button("QUIT", halfWidth, halfHeight - espacamento);
         jogar.behaviors.add(new ClickableArea(sair, () -> {
             System.out.println("Saindo");
             System.exit(0);

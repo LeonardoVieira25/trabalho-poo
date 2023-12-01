@@ -16,6 +16,7 @@ public class GameObject implements Cloneable {
     public String name;
     public Color color = Color.gray;
     public boolean removeNextIteration = false;
+    public boolean onHover = false;
 
     public List<Behavior> behaviors = new ArrayList<Behavior>();
 

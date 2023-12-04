@@ -26,6 +26,9 @@ public class Contador extends GameObject{
     public void updateValue(String str){
         this.texto = baseText + str;
     }
+    public String getId() {
+        return id;
+    }
 
     @Override
     public void draw(Graphics2D g2d){

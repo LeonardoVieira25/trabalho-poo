@@ -13,6 +13,7 @@ import src.components.Button;
 
 
 public class Map1 extends Maps {
+    
     public Map1() {
         objectsList = new java.util.ArrayList<GameObject>();
         objectsListBuffer = new java.util.ArrayList<GameObject>();
@@ -24,8 +25,10 @@ public class Map1 extends Maps {
         objectsList.add(spawner2);
         GameObject spawner3 = new Spawner(600, Janela.HEIGHT+10, 100, 100, objectsListBuffer);
         objectsList.add(spawner3);
-
-
+        Button livesButton = new Button("Vidas: "/*vidas, mas 
+        tem que fazer ela diminuir em tempo real e tal*/, Janela.WIDTH-100, Janela.HEIGHT-100);
+        objectsList.add(livesButton);
+        
         Player player = new Player(objectsListBuffer);
         objectsList.add(player);
     }

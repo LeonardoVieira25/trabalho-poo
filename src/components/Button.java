@@ -5,7 +5,7 @@ import java.awt.Color;
 
 
 public class Button extends GameObject {
-    private String name;
+    public String name;
     private boolean inicializado = false;
     private int centerX = 0;
     private int centerY = 0;

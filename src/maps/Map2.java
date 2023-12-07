@@ -22,7 +22,7 @@ public class Map2 extends Maps {
         int espacamento = 100;
 
         List<String> frases = new java.util.ArrayList<>();
-        frases.add("Foi quase, apesar do jogo ser infinito. Quer jogar de novo?");
+        frases.add("Foi quase, apesar do ser infinito. Quer jogar de novo?");
         frases.add("Perdeu. Quer tentar de novo?");
         frases.add("Não foi dessa vez. Tente de novo");
         frases.add("Game Over");
@@ -35,7 +35,7 @@ public class Map2 extends Maps {
         Button jogar = new Button("JOGAR", halfWidth, halfHeight);
         jogar.behaviors.add(new ClickableArea(jogar, () -> {
             System.out.println("Jogando");
-            Scene.selectedMapId = 0;
+            Scene.selectedMapId = 1;
         }));
 
         Button sair = new Button("QUIT", halfWidth, halfHeight - espacamento);

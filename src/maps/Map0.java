@@ -18,7 +18,7 @@ public class Map0 extends Maps {
         Button jogar = new Button("JOGAR", halfWidth, halfHeight);
         jogar.behaviors.add(new ClickableArea(jogar, () -> {
             System.out.println("Jogando");
-            Scene.selectedMapId = 2;
+            Scene.selectedMapId = 1;
         }));
 
         Button sair = new Button("QUIT", halfWidth, halfHeight - espacamento);

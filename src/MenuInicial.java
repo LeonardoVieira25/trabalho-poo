@@ -20,33 +20,43 @@ public class MenuInicial extends JPanel {
         Runnable jogar
     ) {
         System.out.println(screenSize.width + "x" + screenSize.height);
-        setSize(500,500);
-
+        
         JFrame frame = new JFrame("Janela");
         frame.setPreferredSize(new Dimension(400, 400));
-        frame.setSize(WIDTH, HEIGHT);
-        // frame.setSize(500,500);
+        
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 
         setLayout(null);
 
-        JTextField textField = new JTextField(20);
-        textField.setBounds(250, 50, 100, 20);
-    
-        JButton button = new JButton("Button");
-        button.setBounds(120, 50, 100, 20);
 
-        button.addActionListener((e) -> {
-            System.out.println("Button pressed");
+
+        JTextField username = new JTextField(20);
+        username.setBounds(150, 120, 100, 20);
+        JLabel userText = new JLabel("Username");
+        userText.setBounds(150,100,100,20);
+        
+
+        JTextField password = new JTextField(20);
+        password.setBounds(150, 160, 100, 20);
+        JLabel passText = new JLabel("Password");
+        passText.setBounds(150,140,100,20);
+
+
+        JButton login = new JButton("Login");
+        login.setBounds(150, 200, 100, 20);
+
+        login.addActionListener((e) -> {
             jogar.run();
             frame.dispose();
         });
-    
 
-        add(textField);
-        add(button);
+        add(userText);
+        add(passText);
+        add(username);
+        add(password);
+        add(login);
 
         frame.setVisible(true);
         setVisible(true);

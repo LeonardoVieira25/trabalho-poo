@@ -29,7 +29,7 @@ public class Map2 extends Maps {
         frases.add("Try again");
         
         Button perdeu = new Button((String)frases.get(random.nextInt(frases.size())), halfWidth, halfHeight+200);
-        System.out.println(perdeu.name);
+        
         // `perdeu` eh apenas uma mensagem, nao tem ClickableArea()
         
         Button jogar = new Button("JOGAR", halfWidth, halfHeight);

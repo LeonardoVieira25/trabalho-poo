@@ -15,13 +15,13 @@ public class Map0 extends Maps {
         int halfWidth = Janela.WIDTH/2; // referente a tela
         int espacamento = 100;
         
-        Button jogar = new Button("JOGAR", halfWidth, halfHeight);
+        Button jogar = new Button("JOGAR", halfWidth, halfHeight, objectsListBuffer);
         jogar.behaviors.add(new ClickableArea(jogar, () -> {
             System.out.println("Jogando");
             Scene.selectedMapId = 1;
         }));
 
-        Button sair = new Button("QUIT", halfWidth, halfHeight - espacamento);
+        Button sair = new Button("Sair do jogo", halfWidth, halfHeight - espacamento, objectsListBuffer);
         jogar.behaviors.add(new ClickableArea(sair, () -> {
             System.out.println("Saindo");
             System.exit(0);

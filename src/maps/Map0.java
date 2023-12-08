@@ -15,20 +15,20 @@ public class Map0 extends Maps {
 
         objectsList = new java.util.ArrayList<GameObject>();
         objectsListBuffer = new java.util.ArrayList<GameObject>();
-        float halfHeight = Janela.HEIGHT/2; // referente a tela
-        float halfWidth = Janela.WIDTH/2; // referente a tela
-        float optW = 150; // option width
-        float optH = 50; // option height
-        float espacamento = 20;
-        Button jogar = new Button("JOGAR", halfWidth - optW/2 , halfHeight, optW, optH);
+
+        int halfHeight = Janela.HEIGHT/2; // referente a tela
+        int halfWidth = Janela.WIDTH/2; // referente a tela
+        int espacamento = 100;
+        
+        Button jogar = new Button("JOGAR", halfWidth, halfHeight, objectsListBuffer);
         jogar.behaviors.add(new ClickableArea(jogar, () -> {
-            System.out.println("Clicou 0");
+            System.out.println("Jogando");
             Scene.selectedMapId = 1;
         }));
 
-        Button sair = new Button("QUIT", halfWidth - optW/2, halfHeight - espacamento - optH - espacamento, optW, optH);
+        Button sair = new Button("Sair do jogo", halfWidth, halfHeight - espacamento, objectsListBuffer);
         jogar.behaviors.add(new ClickableArea(sair, () -> {
-            System.out.println("Clicou SAIR");
+            System.out.println("Saindo");
             System.exit(0);
         }));
 

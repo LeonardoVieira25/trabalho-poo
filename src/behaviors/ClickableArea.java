@@ -19,11 +19,12 @@ public class ClickableArea extends Behavior {
 
     @Override
     public void update() {
-        if(isInside(Scene.mousePositionX, Scene.mousePositionY)){
-            gameObject.color = java.awt.Color.RED;
-        }else{
-            gameObject.color = java.awt.Color.BLACK;
-        }
+        // if(isInside(Scene.mousePositionX, Scene.mousePositionY)){
+        //     gameObject.color = java.awt.Color.RED;
+        // }else{
+        //     gameObject.color = java.awt.Color.gray;
+        // }
+        gameObject.onHover = isInside(Scene.mousePositionX, Scene.mousePositionY);
         if (isInside(Scene.mousePressedX, Scene.mousePressedY)) {
             action.run();
         }

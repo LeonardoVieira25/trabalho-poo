@@ -19,7 +19,8 @@ public class Main {
         MenuInicial menuInicial = new MenuInicial((JFrame frame) -> {
             try{
                 maps.add(new Map0());
-                maps.add(new Map1(MenuInicial.getUsername(),MenuInicial.getPassword()));
+                maps.add(new Map1(MenuInicial.getUsername(), MenuInicial.getPassword()));
+                // maps.add(new Map1("user1", "password1"));
                 maps.add(new Map2());
                 Janela janela = new Janela();
                 Scene scene = new Scene(janela, maps);

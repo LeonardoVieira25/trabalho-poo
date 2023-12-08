@@ -34,6 +34,7 @@ public class Map1 extends Maps {
         if (player == null) {
             throw new UserNotLogged();
         }
+        player.setObjectsList(objectsListBuffer);
         objectsList.add(player);
 
         GameController gameController = new GameController(objectsList);

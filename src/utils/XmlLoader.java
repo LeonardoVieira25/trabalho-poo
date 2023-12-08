@@ -101,19 +101,22 @@ public class XmlLoader {
             XPath xpath = xPathfactory.newXPath();
 
             // Query for the player with the specified username and password
-            String expression = String.format("/players/player[@username='%s' and @password='%s']", username, password);
+            String expression = String.format("/root/player[@username='%s' and @password='%s']", username, password);
             Node playerNode = (Node) xpath.evaluate(expression, doc, XPathConstants.NODE);
 
             if (playerNode != null && playerNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element playerElement = (Element) playerNode;
+
+                System.out.println("Integer.parseInt(playerElement.getAttribute(id))");
+                System.out.println(Integer.parseInt(playerElement.getAttribute("id")));
 
                 // Create a new Player object with the attributes from the XML element
                 Player player = new Player(null);
                 player.setId(Integer.parseInt(playerElement.getAttribute("id")));
                 player.setUsername(playerElement.getAttribute("username"));
                 player.setPassword(playerElement.getAttribute("password"));
-                player.setVidaInicila(Integer.parseInt(playerElement.getAttribute("vidaInicila")));
-                player.setMaxPontuacao(Integer.parseInt(playerElement.getAttribute("maxPontuacao")));
+                player.setVidaInicila(Integer.parseInt(playerElement.getAttribute("vidaInicila"))); // Ajuste aqui
+                player.setMaxPontuacao(Integer.parseInt(playerElement.getAttribute("maxPontuacao"))); // Ajuste aqui
                 player.setSpawnRate(Float.parseFloat(playerElement.getAttribute("spawnRate")));
                 player.setSpread(Float.parseFloat(playerElement.getAttribute("spread")));
 

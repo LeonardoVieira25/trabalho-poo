@@ -94,7 +94,7 @@ public class Player extends PhysicsObject {
 
         // System.out.println(velocity);
 
-        if(this.accumulatedTime > 0.301-velocity/100 && velocity > 0){
+        if(this.accumulatedTime > spawnRate && velocity > 0){
             PhysicsObject newInstance = new SlashParticle(this.positionX, this.positionY, 5, 5);
             this.objectsList.add(newInstance);
             this.accumulatedTime = 0;

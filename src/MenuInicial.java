@@ -2,6 +2,7 @@ package src;
 
 import java.awt.*;
 import java.util.List;
+import java.util.function.Consumer;
 
 import javax.swing.*;
 
@@ -15,14 +16,27 @@ public class MenuInicial extends JPanel {
     public static int HEIGHT = (int) screenSize.height;
     public static int WIDTH = (int) screenSize.width;
 
+    private static String username;
+    private static String password;
+    public static String getUsername() {
+        return username;
+    }
+    public static String getPassword() {
+        return password;
+    }
+
+    private JFrame frame;
+    public JFrame getFrame() {
+        return frame;
+    }
     // recebe uma função que é chamada quando o botão é clicado
     public MenuInicial(
-        Runnable jogar
+        Consumer<JFrame> jogar
     ) {
         System.out.println(screenSize.width + "x" + screenSize.height);
         setSize(500,500);
 
-        JFrame frame = new JFrame("Janela");
+        frame = new JFrame("Janela");
         frame.setPreferredSize(new Dimension(400, 400));
         frame.setSize(WIDTH, HEIGHT);
         // frame.setSize(500,500);
@@ -40,8 +54,7 @@ public class MenuInicial extends JPanel {
 
         button.addActionListener((e) -> {
             System.out.println("Button pressed");
-            jogar.run();
-            frame.dispose();
+            jogar.accept(frame);
         });
     
 

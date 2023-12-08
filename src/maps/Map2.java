@@ -12,7 +12,7 @@ import java.util.Random;
 // E uma copia de Map0, mas com a mensagem "Voce perdeu" na tela
 
 public class Map2 extends Maps {
-    public Map2() { // e pra ser o mainMenu
+    public Map2() throws Exception { // e pra ser o mainMenu
         objectsList = new java.util.ArrayList<GameObject>();
         objectsListBuffer = new java.util.ArrayList<GameObject>();
         Random random = new Random();

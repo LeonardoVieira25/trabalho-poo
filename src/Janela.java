@@ -1,4 +1,5 @@
 package src;
+
 import java.awt.*;
 import java.util.List;
 
@@ -11,25 +12,27 @@ import javax.swing.*;
 import src.components.GameObject;
 
 // public class Janela extends JFrame{
-public class Janela extends JPanel implements KeyListener{
+public class Janela extends JPanel implements KeyListener {
     public List<GameObject> renderingList;
-    
+
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public static int HEIGHT = (int) screenSize.height;
     public static int WIDTH = (int) screenSize.width;
-    
+
     public void keyPressed(KeyEvent key) {
-        if (key.getKeyCode() == KeyEvent.VK_ESCAPE){
-            if (Scene.selectedMapId != 0){
+        if (key.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            if (Scene.selectedMapId != 0) {
                 Scene.selectedMapId = 0;
                 System.out.println("Voltou ao menu");
             }
         }
     }
 
-    public void keyReleased(KeyEvent key){}
+    public void keyReleased(KeyEvent key) {
+    }
 
-    public void keyTyped(KeyEvent key){}
+    public void keyTyped(KeyEvent key) {
+    }
 
     public Janela() {
         System.out.println(screenSize.width + "x" + screenSize.height);
@@ -51,25 +54,29 @@ public class Janela extends JPanel implements KeyListener{
         frame.add(this);
         frame.pack();
         frame.setVisible(true);
-        
-        
+
     }
-    
-    public void render(List<GameObject> renderingList){
-        if(renderingList != null){
+
+    public void render(List<GameObject> renderingList) {
+        if (renderingList != null) {
             this.renderingList = renderingList;
             repaint();
         }
     }
-    
+
     public void paintComponent(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
         
+        Graphics2D g2d = (Graphics2D) g;
+
+        // RenderingHints rh = new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_SPEED);
+        // rh.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
+        // g2d.setRenderingHints(rh);
+
         g2d.setColor(Color.WHITE);
         g2d.fillRect(0, 0, WIDTH, HEIGHT);
         g2d.translate(0, getHeight());
-        
-        if(renderingList != null){
+
+        if (renderingList != null) {
             for (GameObject gameObject : renderingList) {
                 gameObject.draw(g2d);
             }

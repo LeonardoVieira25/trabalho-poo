@@ -1,0 +1,5 @@
+<!-- FILEPATH: /D:/trabalho_oo/proj/src/assets/players.xml -->
+<root>
+    <player id="1" username="user1" password="password1" vidaInicila="100" maxPontuacao="1000" spawnRate="0.5" spread="1.0">
+    </player>
+</root>

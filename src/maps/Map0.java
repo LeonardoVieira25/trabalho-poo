@@ -5,11 +5,12 @@ import src.Janela;
 import src.Scene;
 import src.behaviors.ClickableArea;
 import src.components.GameObject;
+import src.exceptions.UserNotLogged;
 import src.utils.XmlLoader;
 
 
 public class Map0 extends Maps {
-    public Map0() { // e pra ser o mainMenu
+    public Map0() throws Exception { // e pra ser o mainMenu
         XmlLoader.loadLevels();
 
 

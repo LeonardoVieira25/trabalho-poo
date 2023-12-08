@@ -5,10 +5,14 @@ mkdir -p compiled
 javac -d target src/*.java
 
 # Create a manifest file with the main class specified
-echo "Main-Class: src/Main" > manifest.txt
+echo "Main-Class: Main" > manifest.txt
 
 # Create a .jar file with the compiled .class files and the manifest file
 jar cvfm compiled/myjar.jar manifest.txt -C target/ .
 
 # Remove the manifest file
 rm manifest.txt
+
+mkdir compiled/src/assets/
+
+cp -r src/assets/* compiled/src/assets/

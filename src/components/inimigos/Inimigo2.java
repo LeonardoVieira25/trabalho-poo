@@ -48,7 +48,7 @@ public class Inimigo2 extends Inimigo {
 
         this.behaviors.add(new Collision(this, (otherPhysicsObject) -> {
             if (otherPhysicsObject instanceof SlashParticle) {
-                Maps.eventManager.trigger("pontos:+1");
+                Maps.eventManager.trigger("Pontos:+1");
             }
             return otherPhysicsObject instanceof SlashParticle;
         }));

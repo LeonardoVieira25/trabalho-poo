@@ -6,35 +6,38 @@ import src.components.PhysicsObject;
 public class BounceVertical extends Behavior {
     // private PhysicsObject physicsObject;
     private boolean hasEnteredScreen = false;
-    private static int collisionCounter = 0; /// MARCADOR
 
-    public BounceVertical(PhysicsObject gameObject) {
+    // * define uma ação que sera chama quando o objeto quicar */
+    private Runnable onBounce = () -> {
+    };
+
+    public BounceVertical(PhysicsObject gameObject){
         super(gameObject);
-        // physicsObject = gameObject;
     }
-    
+    public BounceVertical(PhysicsObject gameObject, Runnable onBounce){
+        super(gameObject);
+        this.onBounce = onBounce;
+    }
+
     @Override
     public void update() {
         PhysicsObject physicsObject = (PhysicsObject) gameObject;
-        if(hasEnteredScreen){
-            if(physicsObject.positionY < 0){
+        if (hasEnteredScreen) {
+            if (physicsObject.positionY < 0) {
                 physicsObject.positionY = 0;
                 physicsObject.velocityY *= -0.8;
-                System.out.println(collisionCounter);
-                collisionCounter += 1;
-                if(collisionCounter % 10 == 0){ // MARCADOR
-                    System.out.println("k*Dez quedas ja");
-                }
+
+                onBounce.run();
             }
-            if(physicsObject.positionY + physicsObject.height > Janela.HEIGHT){
+            if (physicsObject.positionY + physicsObject.height > Janela.HEIGHT) {
                 physicsObject.positionY = Janela.HEIGHT - physicsObject.height;
                 physicsObject.velocityY *= -1;
             }
-        }else{
-            if(physicsObject.positionY < Janela.HEIGHT){
+        } else {
+            if (physicsObject.positionY + gameObject.height < Janela.HEIGHT) {
                 hasEnteredScreen = true;
             }
         }
     }
-    
+
 }

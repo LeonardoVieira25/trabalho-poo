@@ -20,6 +20,13 @@ public class GameObject implements Cloneable {
 
     public List<Behavior> behaviors = new ArrayList<Behavior>();
 
+    protected java.util.function.Consumer<Object> listener = (event) -> {
+        System.out.println("Evento recebido: " + event.toString());
+    };
+    public java.util.function.Consumer<Object> getListener() {
+        return listener;
+    }
+
     private double lastTimeRender = System.nanoTime();
     public double deltaTimeRender = 0;
 

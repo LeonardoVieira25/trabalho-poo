@@ -1,6 +1,7 @@
 import java.util.List;
 
 import src.Janela;
+import src.MenuInicial;
 import src.Scene;
 import src.maps.Map0;
 import src.maps.Map1;
@@ -14,8 +15,11 @@ public class Main {
         maps.add(new Map0());
         maps.add(new Map1());
         maps.add(new Map2());
-        Janela janela = new Janela();
+        boolean jogando = false;
+        MenuInicial menuInicial = new MenuInicial(() -> {
+            Janela janela = new Janela();
+            Scene scene = new Scene(janela, maps);
+        });
 
-        Scene scene = new Scene(janela, maps);
     }
 }

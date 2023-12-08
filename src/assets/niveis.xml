@@ -1,0 +1,13 @@
+<!-- FILEPATH: /D:/trabalho_oo/proj/src/assets/niveis.xml -->
+<root>
+    <level id="1">
+        <spawnRate>0.5</spawnRate>
+        <enemyTypes>
+            <type>enemy1</type>
+            <type>enemy2</type>
+            <type>enemy3</type>
+        </enemyTypes>
+        <spawnCount>100</spawnCount>
+        <spawnAcceleration>0.1</spawnAcceleration>
+    </level>
+</root>

@@ -8,7 +8,10 @@ public class Player extends PhysicsObject {
     private List<GameObject> objectsList;
     private int lastPositionX = 0;
     private int lastPositionY = 0;
-
+    private int vida = 100;
+    public int getVida() {
+        return vida;
+    }
     public Player(List<GameObject> objectsList){
         super(0, 0, 10, 10);
         this.objectsList = objectsList;

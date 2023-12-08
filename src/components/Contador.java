@@ -3,7 +3,7 @@ package src.components;
 import java.awt.*;
 
 public class Contador extends GameObject{
-    private String texto;
+    private String texto = "";
     private String baseText;
     private String id;
 
@@ -16,12 +16,18 @@ public class Contador extends GameObject{
     private int centerX, centerY;
     private boolean inicializado = false;
 
+    
     public Contador(String baseText, String id, int x, int y){
         super(0,0,0,0);
         this.baseText = baseText;
         this.centerX = x;
         this.centerY = y;
         this.id = id;
+        this.texto = baseText;
+
+        listener = (event) -> {
+            System.out.println("Constador recebeu: " + event.toString());
+        };
     }
     public void updateValue(String str){
         this.texto = baseText + str;
@@ -35,16 +41,20 @@ public class Contador extends GameObject{
         g2d.setFont(new Font("Arial", Font.PLAIN, 20));
 
         int padding = 10;
-        int textoWidth = g2d.getFontMetrics().stringWidth(texto);
+        int textoWidth = g2d.getFontMetrics().stringWidth(this.texto);
         int textoHeight = g2d.getFontMetrics().getHeight();
+        // int textoWidth = 200;
+        // int textoHeight = 20;
         
         if(!inicializado){
             inicializado = true;
-            super.width = textoWidth + padding*2;
-            super.height = textoHeight + padding*2;
-            super.positionX = centerX - super.width/2;
-            super.positionY = centerY - super.height/2;
         }
+        super.width = textoWidth + padding*2;
+        super.height = textoHeight + padding*2;
+        super.positionX = centerX - super.width/2;
+        super.positionY = centerY - super.height/2;
+
+
         g2d.setColor(fillColor);
         g2d.setPaint(bordeColor);
         g2d.fillRect((int)(this.positionX-borderThinness), (int) (- this.positionY - height-borderThinness) ,(int) width+borderThinness*2,(int) height+borderThinness*2);

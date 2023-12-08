@@ -3,7 +3,12 @@ package src.components;
 import java.awt.*;
 
 public class Contador extends GameObject{
+    //* O nome do evento que o contador escuta começa com o id dele
+    //* depois de : vem a ação que ele deve fazer	
+    //* Ex: id = "vidaPlayer" -> evento = "vidaPlayer:+1"
+    
     private String texto = "";
+    private int value = 0;
     private String baseText;
     private String id;
 
@@ -26,7 +31,20 @@ public class Contador extends GameObject{
         this.texto = baseText;
 
         listener = (event) -> {
-            System.out.println("Constador recebeu: " + event.toString());
+            if(event instanceof String){
+                String eventString = (String) event;
+                if(eventString.startsWith(this.id)){
+                    String[] eventStringSplit = eventString.split(":");
+                    if(eventStringSplit[1].startsWith("+")){
+                        this.value += Integer.parseInt(eventStringSplit[1].substring(1));
+                    }else if(eventStringSplit[1].startsWith("-")){
+                        this.value -= Integer.parseInt(eventStringSplit[1].substring(1));
+                    }else{
+                        this.value = Integer.parseInt(eventStringSplit[1]);
+                    }
+                    this.texto = baseText + value;
+                }
+            }
         };
     }
     public void updateValue(String str){

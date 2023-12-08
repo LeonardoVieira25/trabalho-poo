@@ -5,12 +5,17 @@ import src.Janela;
 import src.Scene;
 import src.behaviors.ClickableArea;
 import src.components.GameObject;
+import src.utils.XmlLoader;
 
 
 public class Map0 extends Maps {
     public Map0() { // e pra ser o mainMenu
+        XmlLoader.loadLevels();
+
+
         objectsList = new java.util.ArrayList<GameObject>();
         objectsListBuffer = new java.util.ArrayList<GameObject>();
+
         int halfHeight = Janela.HEIGHT/2; // referente a tela
         int halfWidth = Janela.WIDTH/2; // referente a tela
         int espacamento = 100;

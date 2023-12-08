@@ -9,7 +9,7 @@ import src.components.GameObject;
 public class SpawnGameObject extends Behavior {
     private List<GameObject> objectsList;
     public GameObject objectToSpawn;
-    private float timeToSpawn = 0.5f;
+    public float timeToSpawn = 0.5f;
     private Function<GameObject, Void> beforeSpawn;
     
     public SpawnGameObject(GameObject gameObject, List<GameObject> objectsList, float timeToSpawn, GameObject objectToSpawn) {

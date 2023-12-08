@@ -32,16 +32,16 @@ public class MenuInicial extends JPanel {
 
 
 
-        JTextField username = new JTextField(20);
-        username.setBounds(150, 120, 100, 20);
         JLabel userText = new JLabel("Username");
         userText.setBounds(150,100,100,20);
+        JTextField username = new JTextField(20);
+        username.setBounds(150, 120, 100, 20);
         
 
-        JTextField password = new JTextField(20);
-        password.setBounds(150, 160, 100, 20);
         JLabel passText = new JLabel("Password");
         passText.setBounds(150,140,100,20);
+        JTextField password = new JTextField(20);
+        password.setBounds(150, 160, 100, 20);
 
 
         JButton login = new JButton("Login");
@@ -52,11 +52,16 @@ public class MenuInicial extends JPanel {
             frame.dispose();
         });
 
+        JButton register = new JButton("Registrar");
+        register.setBounds(150, 240, 100, 20);
+
+        //register.addActionListener();
         add(userText);
         add(passText);
         add(username);
         add(password);
         add(login);
+        add(register);
 
         frame.setVisible(true);
         setVisible(true);

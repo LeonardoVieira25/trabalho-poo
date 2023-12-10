@@ -1,3 +1,7 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
 package src.behaviors;
 
 import java.util.function.Function;
@@ -5,7 +9,6 @@ import java.util.function.Function;
 import src.components.PhysicsObject;
 
 public class Collision extends Behavior {
-    // private PhysicsObject physicsObject;
     private boolean isValid = true;
 
     public Collision(PhysicsObject gameObject) {
@@ -16,7 +19,6 @@ public class Collision extends Behavior {
             isValid = false;
             return;
         }
-        // this.physicsObject = gameObject;
     }
 
     private Function<PhysicsObject, Boolean> onCollision;

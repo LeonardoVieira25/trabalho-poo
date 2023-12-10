@@ -1,3 +1,7 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
 package src.components;
 
 import java.awt.Color;
@@ -6,9 +10,6 @@ import src.behaviors.Collision;
 import src.behaviors.DestroyAfterTime;
 
 public class SlashParticle extends PhysicsObject {
-    private float initialVelocity;
-
-
     public SlashParticle(double positionX, double positionY, double width, double height, float spread) {
         super(positionX, positionY, width, height);
         this.velocityX = (Math.random() * 50 - 25)*spread;
@@ -26,7 +27,6 @@ public class SlashParticle extends PhysicsObject {
     public SlashParticle(double positionX, double positionY, double width, double height, float initialVelocity, float timeToLive) {
         super(positionX, positionY, width, height);
         this.timeToLive = timeToLive;
-        this.initialVelocity = initialVelocity;
         this.velocityX = (Math.random() * 100 - 50)*initialVelocity;
         this.velocityY = (Math.random() * 100 - 50)*initialVelocity;
         this.behaviors.add(new DestroyAfterTime(this, timeToLive));
@@ -35,7 +35,6 @@ public class SlashParticle extends PhysicsObject {
         }, true));
         this.width = (Math.random()+1)*4;
         this.height = (Math.random()+1)*4;
-        // Color flameColors [] = {Color.RED, Color.ORANGE, Color.YELLOW};
         this.color = new Color(255, 255, 255, 255);
     }
     private float livedTime = 0;

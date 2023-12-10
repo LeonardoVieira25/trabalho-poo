@@ -1,10 +1,11 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
 package src.components.inimigos;
 
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.geom.AffineTransform;
-import java.io.File;
-import java.util.Random;
 
 import src.behaviors.Behavior;
 import src.behaviors.BounceHorizontal;

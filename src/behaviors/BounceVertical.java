@@ -1,10 +1,14 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
+
 package src.behaviors;
 
 import src.Janela;
 import src.components.PhysicsObject;
 
 public class BounceVertical extends Behavior {
-    // private PhysicsObject physicsObject;
     private boolean hasEnteredScreen = false;
 
     // * define uma ação que sera chama quando o objeto quicar */

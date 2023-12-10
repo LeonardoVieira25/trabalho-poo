@@ -1,3 +1,7 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
 package src.behaviors;
 
 import java.util.List;
@@ -48,7 +52,6 @@ public class SpawnGameObject extends Behavior {
     public void update(){
         accumulatedTime += gameObject.deltaTimeRender;
         if(accumulatedTime > this.timeToSpawn){
-            // System.out.println("criar bloco");
             //* se a lista de objects to spawn não for nula, escolher um objeto aleatório da mesma */
             GameObject newInstance;
             if(this.objectsToSpaw != null){

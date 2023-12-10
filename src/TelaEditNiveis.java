@@ -1,3 +1,7 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
 package src;
 
 import java.util.ArrayList;
@@ -8,7 +12,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import src.utils.XmlLoader;
 

@@ -1,3 +1,7 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
 package src;
 
 import java.awt.*;
@@ -5,7 +9,6 @@ import java.util.List;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.KeyAdapter;
 
 import javax.swing.*;
 

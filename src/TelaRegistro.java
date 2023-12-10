@@ -1,18 +1,16 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
 package src;
 
-import java.awt.*;
-import java.util.List;
-
 import javax.swing.*;
-
-import src.components.GameObject;
 import src.utils.XmlLoader;
 
 public class TelaRegistro extends JPanel {
     public TelaRegistro(){
         JFrame frame = new JFrame("Registrar");
 
-        // frame.setPreferredSize(new Dimension(400, 400));
         frame.setSize(400, 400);
         setSize(400, 400);
         

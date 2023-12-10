@@ -1,15 +1,16 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
+
 package src.components.inimigos;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
-import java.io.File;
 
 import src.behaviors.Behavior;
 import src.behaviors.BounceHorizontal;
 import src.behaviors.BounceVertical;
 import src.behaviors.Collision;
-import src.components.PhysicsObject;
 import src.components.SlashParticle;
 import src.maps.Maps;
 

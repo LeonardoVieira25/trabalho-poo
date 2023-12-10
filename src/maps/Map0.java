@@ -1,3 +1,7 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
 package src.maps;
 
 import src.components.Button;
@@ -5,8 +9,6 @@ import src.Janela;
 import src.Scene;
 import src.behaviors.ClickableArea;
 import src.components.GameObject;
-import src.exceptions.UserNotLogged;
-import src.utils.XmlLoader;
 
 
 public class Map0 extends Maps {

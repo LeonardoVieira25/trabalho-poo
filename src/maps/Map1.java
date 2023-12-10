@@ -1,3 +1,7 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
 package src.maps;
 
 import src.Janela;
@@ -19,9 +23,6 @@ public class Map1 extends Maps {
         if (player == null) {
             throw new UserNotLogged();
         }
-        // player.setObjectsList(objectsListBuffer);
-        // objectsList.add(player);
-        // eventManager.addListener(player.getListener());
     }
 
     @Override

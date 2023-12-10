@@ -1,8 +1,11 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
 package src;
 
 import java.awt.*;
 import java.util.List;
-import java.util.function.Consumer;
 
 import javax.swing.*;
 
@@ -12,7 +15,6 @@ import src.maps.Map1;
 import src.maps.Map2;
 import src.maps.Maps;
 
-// public class Janela extends JFrame{
 public class MenuInicial extends JPanel {
     public List<GameObject> renderingList;
 
@@ -37,9 +39,7 @@ public class MenuInicial extends JPanel {
         return frame;
     }
 
-    // recebe uma função que é chamada quando o botão é clicado
     public MenuInicial(
-    // Consumer<JFrame> jogar
     ) {
         System.out.println(screenSize.width + "x" + screenSize.height);
 

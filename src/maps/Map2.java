@@ -1,8 +1,11 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
 package src.maps;
 
 import src.components.Button;
 import src.Janela;
-import src.MenuInicial;
 import src.Scene;
 import src.behaviors.ClickableArea;
 import src.components.GameObject;
@@ -11,7 +14,6 @@ import src.utils.XmlLoader;
 import java.util.List;
 import java.util.Random;
 
-// E uma copia de Map0, mas com a mensagem "Voce perdeu" na tela
 
 public class Map2 extends Maps {
     List<Button> raking = new java.util.ArrayList<Button>();

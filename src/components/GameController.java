@@ -1,28 +1,24 @@
+/*
+Leonardo Vieira Silva - 202235038
+Pablo Henrique Silva de Faria - 202235012
+*/
 package src.components;
 
-import java.awt.Event;
 import java.util.List;
 
 import src.Janela;
 import src.Scene;
 import src.behaviors.ClickableArea;
 import src.maps.Maps;
-import src.utils.EventManager;
 
 public class GameController extends GameObject {
     private final int pointsForLevelUp = 30;
-    private List<GameObject> objectsList;
     private int currentLevel = 1;
     private int pontos = 0;
 
     public GameController(List<GameObject> objectsList) {
         super(0, 0, 0, 0);
 
-        /*
-         * vidaInicial
-         * spawnRate
-         * spread
-         */
         List<GameObject> upgradeScreen = new java.util.ArrayList<GameObject>();
         Button upgradeVidaInicial = new Button("Vida Inicial +1", Janela.WIDTH / 2 - 200, Janela.HEIGHT / 2,
                 objectsList);
@@ -43,7 +39,7 @@ public class GameController extends GameObject {
         }));
         upgradeScreen.add(spread);
 
-        this.objectsList = objectsList;
+
         listener = (event) -> {
             if (event instanceof String) {
                 String eventString = (String) event;
@@ -88,19 +84,7 @@ public class GameController extends GameObject {
         };
     }
 
-    private void onFirstUpdate() {
-        // * mudar de os pontos começarem vazios */
-        // Maps.eventManager.trigger("Nivel:1");
-
-    }
-
-    private boolean firstUpdate = true;
-
     public void update() {
-        if (firstUpdate) {
-            onFirstUpdate();
-            firstUpdate = false;
-        }
     }
 
     public void draw(java.awt.Graphics2D g2d) {

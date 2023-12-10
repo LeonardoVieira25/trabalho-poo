@@ -56,7 +56,6 @@ public class GameController extends GameObject {
                     } else {
                         this.pontos = Integer.parseInt(eventStringSplit[1]);
                     }
-                    System.out.println("Pontos vistos pelo gamecontroller: " + pontos);
 
                     if (pontos - (currentLevel - 1) * pointsForLevelUp >= pointsForLevelUp) {
                         Maps.isPaused = true;

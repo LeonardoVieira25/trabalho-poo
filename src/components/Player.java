@@ -100,7 +100,6 @@ public class Player extends PhysicsObject {
                     String[] eventStringSplit = eventString.split(":");
                     
                     String upgrade = eventStringSplit[0].substring(7);
-                    System.out.println("Upgrade: " + upgrade);
                     if(upgrade.equals("VidaInicial")){
                         if(eventStringSplit[1].startsWith("+")){
                             this.vidaInicial += Integer.parseInt(eventStringSplit[1].substring(1));

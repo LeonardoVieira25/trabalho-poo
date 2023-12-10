@@ -90,8 +90,7 @@ public class XmlLoader {
             if (playerNode != null && playerNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element playerElement = (Element) playerNode;
 
-                System.out.println("Integer.parseInt(playerElement.getAttribute(id))");
-                System.out.println(Integer.parseInt(playerElement.getAttribute("id")));
+                
 
                 Player player = new Player(null);
                 player.setId(Integer.parseInt(playerElement.getAttribute("id")));

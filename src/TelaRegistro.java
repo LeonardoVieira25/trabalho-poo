@@ -42,6 +42,14 @@ public class TelaRegistro extends JPanel {
         JButton criarConta = new JButton("Registrar");
         criarConta.setBounds(150, 240, 100, 20);
         criarConta.addActionListener((event) -> {
+            if(registerUsername.getText().equals("") || registerPassword.getText().equals("") || confirmPassword.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+                return;
+            }
+            if(!registerPassword.getText().equals(confirmPassword.getText())){
+                JOptionPane.showMessageDialog(null, "As senhas não coincidem");
+                return;
+            }
 
             XmlLoader.registerPlayer(registerUsername.getText(), registerPassword.getText());
             

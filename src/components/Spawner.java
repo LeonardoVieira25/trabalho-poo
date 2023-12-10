@@ -32,7 +32,8 @@ public class Spawner extends GameObject {
                 if(eventString.startsWith("Nivel:")){
                     int currentLevel = Integer.parseInt(eventString.split(":")[1]);
                     String enemyTypes = XmlLoader.getEnemyTypes(currentLevel);
-                    System.out.println("EnemyTypes: " + enemyTypes);
+
+
                     if(enemyTypes.indexOf("1") != -1){
                         listaInimigos.add(new Inimigo1(positionX, positionY));
                     }
@@ -46,15 +47,12 @@ public class Spawner extends GameObject {
                         listaInimigos.add(new Inimigo4(positionX, positionY));
                     }
 
-                    
                 }
                 
             }
         };
 
 
-        listaInimigos.add(new Inimigo1(positionX, positionY));
-        listaInimigos.add(new Inimigo2(positionX, positionY));
 
         this.spawnBehavior = new SpawnGameObject((GameObject) this, this.objectsListBuffer, 2f, listaInimigos,
                 (newInstance) -> {

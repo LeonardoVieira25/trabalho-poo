@@ -29,19 +29,23 @@ public class Janela extends JPanel implements KeyListener {
             }
         }
     }
-
+    
     public void keyReleased(KeyEvent key) {
     }
-
+    
     public void keyTyped(KeyEvent key) {
+        System.out.println(key.getKeyCode());
     }
+    
 
     public Janela() {
         System.out.println(screenSize.width + "x" + screenSize.height);
-
+        
         frame = new JFrame("Janela");
-
+        
         setLayout(new FlowLayout());
+        this.addKeyListener(this);
+        this.setFocusable(true);
         frame.getContentPane().setBackground(Color.WHITE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(800, 800));
@@ -70,9 +74,6 @@ public class Janela extends JPanel implements KeyListener {
         
         Graphics2D g2d = (Graphics2D) g;
 
-        // RenderingHints rh = new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_SPEED);
-        // rh.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-        // g2d.setRenderingHints(rh);
 
         g2d.setColor(new Color(55, 66, 91));
         g2d.fillRect(0, 0, WIDTH, HEIGHT);

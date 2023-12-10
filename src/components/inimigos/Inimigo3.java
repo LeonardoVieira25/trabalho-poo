@@ -54,7 +54,7 @@ public class Inimigo3 extends Inimigo {
             return otherPhysicsObject instanceof SlashParticle;
         }));
 
-        this.image = new javax.swing.ImageIcon("src/assets/inimigo2.png").getImage();
+        this.image = new javax.swing.ImageIcon("src/assets/inimigo3.png").getImage();
     }
 
     @Override

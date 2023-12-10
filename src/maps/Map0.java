@@ -11,9 +11,6 @@ import src.utils.XmlLoader;
 
 public class Map0 extends Maps {
     public Map0() throws Exception { // e pra ser o mainMenu
-        XmlLoader.loadLevels();
-
-
         objectsList = new java.util.ArrayList<GameObject>();
         objectsListBuffer = new java.util.ArrayList<GameObject>();
 
@@ -35,6 +32,5 @@ public class Map0 extends Maps {
 
         objectsList.add(jogar);
         objectsList.add(sair);
-        
     }
 }

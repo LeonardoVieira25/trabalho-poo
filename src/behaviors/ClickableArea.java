@@ -16,18 +16,18 @@ public class ClickableArea extends Behavior {
     public boolean isInside(int x, int y) {
         return x >= gameObject.positionX && x <= gameObject.positionX + gameObject.width && y >= gameObject.positionY && y <= gameObject.positionY + gameObject.height;
     }
-
+    private boolean pressing = false;
     @Override
     public void update() {
-        // if(isInside(Scene.mousePositionX, Scene.mousePositionY)){
-        //     gameObject.color = java.awt.Color.RED;
-        // }else{
-        //     gameObject.color = java.awt.Color.gray;
-        // }
         gameObject.onHover = isInside(Scene.mousePositionX, Scene.mousePositionY);
-        if (isInside(Scene.mousePressedX, Scene.mousePressedY)) {
-            action.run();
-        }
 
+        if(pressing && !(Scene.mousePressedX > 0) && !(Scene.mousePressedX > 0)){
+            pressing = false;
+            if (isInside(Scene.mousePositionX, Scene.mousePositionY)) {
+                action.run();
+            }
+        }else{
+            pressing = isInside(Scene.mousePressedX, Scene.mousePressedY);
+        }
     }
 }

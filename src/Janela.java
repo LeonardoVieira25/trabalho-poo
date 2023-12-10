@@ -15,6 +15,8 @@ import src.components.GameObject;
 public class Janela extends JPanel implements KeyListener {
     public List<GameObject> renderingList;
 
+    public static JFrame frame;
+
     private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public static int HEIGHT = (int) screenSize.height;
     public static int WIDTH = (int) screenSize.width;
@@ -37,7 +39,7 @@ public class Janela extends JPanel implements KeyListener {
     public Janela() {
         System.out.println(screenSize.width + "x" + screenSize.height);
 
-        JFrame frame = new JFrame("Janela");
+        frame = new JFrame("Janela");
 
         setLayout(new FlowLayout());
         frame.getContentPane().setBackground(Color.WHITE);
@@ -72,7 +74,7 @@ public class Janela extends JPanel implements KeyListener {
         // rh.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
         // g2d.setRenderingHints(rh);
 
-        g2d.setColor(Color.WHITE);
+        g2d.setColor(new Color(55, 66, 91));
         g2d.fillRect(0, 0, WIDTH, HEIGHT);
         g2d.translate(0, getHeight());
 

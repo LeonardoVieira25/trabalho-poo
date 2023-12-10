@@ -61,8 +61,6 @@ public class Contador extends GameObject{
         int padding = 10;
         int textoWidth = g2d.getFontMetrics().stringWidth(this.texto);
         int textoHeight = g2d.getFontMetrics().getHeight();
-        // int textoWidth = 200;
-        // int textoHeight = 20;
         
         if(!inicializado){
             inicializado = true;

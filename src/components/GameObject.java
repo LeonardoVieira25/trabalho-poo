@@ -28,6 +28,9 @@ public class GameObject implements Cloneable {
     }
 
     private double lastTimeRender = System.nanoTime();
+    void resetLastTimeRender() {
+        this.lastTimeRender = System.nanoTime();
+    }
     public double deltaTimeRender = 0;
 
     @Override

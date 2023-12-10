@@ -45,9 +45,13 @@ public class Scene {
             public void mouseReleased(MouseEvent e) {
                 mousePressedX = -1;
                 mousePressedY = -1;
+
+                mousePositionX = e.getX();
+                mousePositionY = -(e.getY() - Janela.HEIGHT);
                 super.mouseReleased(e);
             }
 
+            
         });
         this.janela.addMouseMotionListener(new MouseAdapter() {
             @Override
@@ -61,6 +65,8 @@ public class Scene {
         run();
     }
 
+    private int lastSelectedMapId = -1;
+
     private void run() {
         Runnable gameLoop = new Runnable() {
             @Override
@@ -70,6 +76,11 @@ public class Scene {
                 int FPS = 60;
 
                 while (true) {
+                    if(selectedMapId != lastSelectedMapId){
+                        lastSelectedMapId = selectedMapId;
+                        maps.get(selectedMapId).onEnter();
+                    }
+
                     firstTime = System.nanoTime();
 
                     for (GameObject gameObject : maps.get(selectedMapId).objectsList) {

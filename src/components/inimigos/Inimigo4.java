@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.geom.AffineTransform;
 import java.io.File;
+import java.util.Random;
 
 import src.behaviors.Behavior;
 import src.behaviors.BounceHorizontal;
@@ -12,13 +13,13 @@ import src.behaviors.Collision;
 import src.components.SlashParticle;
 import src.maps.Maps;
 
-public class Inimigo2 extends Inimigo {
+public class Inimigo4 extends Inimigo {
     private static int width = 100;
     private static int height = 100;
 
     @Override
     public Object clone() {
-        Inimigo2 clone = new Inimigo2(positionX, positionY);
+        Inimigo4 clone = new Inimigo4(positionX, positionY);
         clone.velocityX = this.velocityX;
         clone.forceX = this.forceX;
         clone.velocityY = this.velocityY;
@@ -36,15 +37,15 @@ public class Inimigo2 extends Inimigo {
         return clone;
     }
 
-    public Inimigo2(double positionX, double positionY) {
+    public Inimigo4(double positionX, double positionY) {
         super(positionX, positionY, width, height);
         this.behaviors.add(new BounceVertical(this, () -> {
             Maps.eventManager.trigger("Vida:-1");
         }));
         this.color = Color.RED;
         this.behaviors.add(new BounceHorizontal(this));
-        this.forceY = -10;
-        this.forceX = 0;
+        this.forceY = -(Math.random() * 20);
+        this.forceX = Math.random() * 200 - 100;
 
         this.behaviors.add(new Collision(this, (otherPhysicsObject) -> {
             if (otherPhysicsObject instanceof SlashParticle) {
@@ -53,7 +54,7 @@ public class Inimigo2 extends Inimigo {
             return otherPhysicsObject instanceof SlashParticle;
         }));
 
-        this.image = new javax.swing.ImageIcon("src/assets/inimigo2.png").getImage();
+        this.image = new javax.swing.ImageIcon("src/assets/inimigo4.png").getImage();
     }
 
     @Override
@@ -62,8 +63,8 @@ public class Inimigo2 extends Inimigo {
 
         AffineTransform old = g2d.getTransform();
         g2d.rotate(-rotation, positionX + width / 2, -positionY - height / 2);
-        g2d.drawImage(this.image, (int) this.positionX, (int) (-this.positionY - Inimigo2.height), Inimigo2.width,
-                Inimigo2.height, null);
+        g2d.drawImage(this.image, (int) this.positionX, (int) (-this.positionY - Inimigo4.height), Inimigo4.width,
+                Inimigo4.height, null);
         g2d.setTransform(old);
     }
 }

@@ -6,18 +6,22 @@ import java.util.List;
 import javax.swing.*;
 
 import src.components.GameObject;
+import src.utils.XmlLoader;
 
 public class TelaRegistro extends JPanel {
     public TelaRegistro(){
-        JFrame registrador = new JFrame("Registrar");
-        
-        setLayout(null);
+        JFrame frame = new JFrame("Registrar");
 
-        registrador.setPreferredSize(new Dimension(400, 400));
+        // frame.setPreferredSize(new Dimension(400, 400));
+        frame.setSize(400, 400);
+        setSize(400, 400);
         
-        registrador.setResizable(false);
-        registrador.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        registrador.setLocationRelativeTo(null);
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+
+        frame.setLayout(null);
+
 
         JLabel registerUserText = new JLabel("Username");
         registerUserText.setBounds(150,100,100,20);
@@ -36,22 +40,27 @@ public class TelaRegistro extends JPanel {
         confirmPassword.setBounds(150, 200, 100, 20);
 
         JButton criarConta = new JButton("Registrar");
+        criarConta.setBounds(150, 240, 100, 20);
         criarConta.addActionListener((event) -> {
-            registrador.dispose();
+
+            XmlLoader.registerPlayer(registerUsername.getText(), registerPassword.getText());
             
+            new MenuInicial();
+            frame.dispose();
         });
 
-        registrador.add(registerUserText);
-        registrador.add(registerUsername);
-        registrador.add(registerPasswordText);
-        registrador.add(registerPassword);
-        registrador.add(confirmPasswordText);
-        registrador.add(confirmPassword);
+        frame.add(registerUserText);
+        frame.add(registerUsername);
+        frame.add(registerPasswordText);
+        frame.add(registerPassword);
+        frame.add(confirmPasswordText);
+        frame.add(confirmPassword);
+        frame.add(criarConta);
 
-        registrador.setVisible(true);
+        frame.add(this);
+        // frame.pack();
+        frame.setVisible(true);
         setVisible(true);
-        registrador.pack();
-        registrador.add(this);
 
     }
     

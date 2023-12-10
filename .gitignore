@@ -2,7 +2,7 @@
 *.class
 
 # Ignore target folder
-/target/
+/target/*
 
 
-/compiled/
+/compiled/*

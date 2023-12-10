@@ -9,10 +9,10 @@ public class SlashParticle extends PhysicsObject {
     private float initialVelocity;
 
 
-    public SlashParticle(double positionX, double positionY, double width, double height) {
+    public SlashParticle(double positionX, double positionY, double width, double height, float spread) {
         super(positionX, positionY, width, height);
-        this.velocityX = (Math.random() * 100 - 50)*0.5;
-        this.velocityY = (Math.random() * 100 - 50)*0.5;
+        this.velocityX = (Math.random() * 50 - 25)*spread;
+        this.velocityY = (Math.random() * 50 - 25)*spread;
         this.behaviors.add(new DestroyAfterTime(this, 2));
         this.behaviors.add(new Collision(this, (otherPhysicsObject) -> {
             return !(otherPhysicsObject instanceof SlashParticle || otherPhysicsObject instanceof Player);
@@ -36,7 +36,7 @@ public class SlashParticle extends PhysicsObject {
         this.width = (Math.random()+1)*4;
         this.height = (Math.random()+1)*4;
         // Color flameColors [] = {Color.RED, Color.ORANGE, Color.YELLOW};
-        this.color = new Color(0, 0, 0, 255);
+        this.color = new Color(255, 255, 255, 255);
     }
     private float livedTime = 0;
     @Override
@@ -46,7 +46,11 @@ public class SlashParticle extends PhysicsObject {
         this.velocityY -= 1*deltaTimeRender;
         this.livedTime += deltaTimeRender;
         if(timeToLive != 0){
-            this.color = new Color(0, 0, 0,  Math.abs((int) (255*(this.timeToLive-this.livedTime))));
+            if((255*(this.timeToLive-this.livedTime)) > 0 && (255*(this.timeToLive-this.livedTime)) < 255){
+                this.color = new Color(255, 255, 255,  Math.abs((int) (255*(this.timeToLive-this.livedTime))));
+            }else{
+                this.color = new Color(255, 255, 255,  0);
+            }
         }
     }
 

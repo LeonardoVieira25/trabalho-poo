@@ -1,5 +1,2 @@
 <root>
-    <player id="1" username="admin" password="admin" vidaInicial="10000" maxPontuacao="100000" spawnRate="100" spread="10.0"></player>
-    <player id="1" username="user1" password="password1" vidaInicial="10" maxPontuacao="0" spawnRate="10" spread="1.0"></player>
-    <player id="1" username="user" password="user" vidaInicial="10" maxPontuacao="0" spawnRate="10" spread="1.0"></player>
 </root>
